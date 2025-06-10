@@ -40,13 +40,16 @@ class Board:
             print("-----Cards distributed----")
 
     def play_game(self) -> None:
-        total_turn_count = 0
-        while total_turn_count <= 52:
-            for player in self.players:
-                while player.cards:
+
+        player_finished = [False for player in self.players]
+
+        while not all(player_finished):
+            for i, player in enumerate(self.players):
+                if player.cards:
                     player.turn_count += 1
                     card_played = player.play()
-                    print(card_played)
+
                 else:
-                    print("Player does not have any cards")
-                total_turn_count += player.turn_count
+                    player_finished[i] = True
+
+        print("All players have dealt their cards")

@@ -27,11 +27,14 @@ class Player:
 
     def play(self) -> Card | None:
         """Player picks randomly a card from their stack"""
+        if not self.cards:
+            return None
+
         selected_card = choice(self.cards)
         self.history.append(selected_card)
-
         print(f"{self.name} in its {self.turn_count} turn played: {selected_card}")
         self.cards.remove(selected_card)
+
         return selected_card
 
     def display_players_cards(self) -> None:
