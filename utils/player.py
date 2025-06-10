@@ -1,5 +1,5 @@
 from typing import List
-from random import shuffle
+from random import shuffle, choice
 from utils.card import Card
 
 
@@ -26,8 +26,13 @@ class Player:
         return f"{self.name} has the following cards: {self.cards}, their history of cards is {self.history}"
 
     def play(self) -> Card:
-        """Player picks a card from their stack"""
-        pass
+        """Player picks randomly a card from their stack"""
+        selected_card = choice(self.cards)
+        self.history.append(selected_card)
+
+        print(f"{self.name} in its {self.turn_count} turn played: {selected_card}")
+        self.cards.remove(selected_card)
+        return selected_card
 
     def display_players_cards(self) -> None:
         print(f"\n{self.name} has the following cards:")
@@ -84,11 +89,12 @@ class Deck:
     def distribute(self, players: List[Player]) -> List[Player]:
         """Distributes the cards on deck one at the time, one player at the time"""
 
-        cards_per_player = len(self.deck_cards) // len(players)
-        print(cards_per_player)
+        n_cards = len(self.deck_cards) // len(players)
+        print(n_cards)
 
         for i, player in enumerate(players):
-            player.cards.extend(self.deck_cards[i : i + cards_per_player])
+            cards_for_player = self.deck_cards[i : i + n_cards]
+            player.cards.extend(cards_for_player)
 
 
 # player_1 = Player(["list of cards"], 0, 0, ["history of cards"])

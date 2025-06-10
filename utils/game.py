@@ -35,6 +35,13 @@ class Board:
         deck.distribute(active_players)
 
         for player in active_players:
-            print(player.display_players_cards())
+            player.display_players_cards()
+            print("-----Cards distributed----")
 
-        print(deck)
+        for player in active_players:
+            while player.cards:
+                player.turn_count += 1
+                card_played = player.play()
+                print(card_played)
+            else:
+                print("Player does not have any cards")
