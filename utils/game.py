@@ -1,6 +1,6 @@
 from typing import List
-from player import Player
-from card import Card
+from utils.player import Player, Deck
+from utils.card import Card
 
 
 class Board:
@@ -17,4 +17,6 @@ class Board:
         self.history_cards = history_cards
 
     def start_game(self):
-        pass
+        deck = Deck()
+        deck.fill_deck()
+        deck.display_deck()
