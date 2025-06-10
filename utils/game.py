@@ -29,16 +29,8 @@ class Board:
 
         deck = Deck()
         deck.fill_deck()
-        print("-----------Before shuffling -----------------")
-        deck.display_deck()
         deck.shuffle()
-        print("\n-----------After shuffling -----------------")
-        deck.display_deck()
-
         deck.distribute(self.players)
-
-        for player in self.players:
-            player.display_players_cards()
 
         print("\n-----------Cards distributed-----------------")
         print("\nThe cards remaining on deck are:")

@@ -40,12 +40,27 @@ class Player:
         if not self.cards:
             return None
 
-        selected_card = choice(self.cards)
+        # selected_card = choice(self.cards)
+        selected_card = self.select_card()
+
         self.history.append(selected_card)
         print(f"{self.name} in its turn {self.turn_count} played: {selected_card}")
         self.cards.remove(selected_card)
 
         return selected_card
+
+    ### To do:
+    def select_card(self) -> Card:
+
+        print(f"Your current cards are:")
+        for i, card in enumerate(self.cards):
+            print(f"Card in position {i}: {card}")
+
+        chosen_card = input(f"Enter the position of the card you want to play")
+        ## Todo:
+        ## Implement the logic for mapping the selection to the card
+        chosen_card = Card()
+        return chosen_card
 
     def display_players_cards(self) -> None:
         """Displays cards in player deck (not history)"""
