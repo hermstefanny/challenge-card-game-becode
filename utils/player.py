@@ -25,7 +25,7 @@ class Player:
 
         return f"{self.name} has the following cards: {self.cards}, their history of cards is {self.history}"
 
-    def play(self) -> Card:
+    def play(self) -> Card | None:
         """Player picks randomly a card from their stack"""
         selected_card = choice(self.cards)
         self.history.append(selected_card)

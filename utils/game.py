@@ -17,6 +17,14 @@ class Board:
         self.history_cards = history_cards
 
     def start_game(self):
+        """
+        Function that plays the game:
+        1. Creating the deck and filling it with cards
+        2. Shuffling the cards deck
+        3. Distributing the cards to the players
+        4. Starting the play by delivering the cards
+        """
+
         deck = Deck()
         deck.fill_deck()
         print("-----------Before shuffling -----------------")
@@ -25,23 +33,20 @@ class Board:
         print("-----------AFTER shuffling -----------------")
         print(deck)
 
-        player_1 = Player("Thomas", [], 0, 0, [])
-        player_2 = Player("Rose", [], 0, 0, [])
-        player_3 = Player("Joseph", [], 0, 0, [])
-        player_4 = Player("Diane", [], 0, 0, [])
+        deck.distribute(self.players)
 
-        active_players = [player_1, player_2, player_3, player_4]
-
-        deck.distribute(active_players)
-
-        for player in active_players:
+        for player in self.players:
             player.display_players_cards()
             print("-----Cards distributed----")
 
-        for player in active_players:
-            while player.cards:
-                player.turn_count += 1
-                card_played = player.play()
-                print(card_played)
-            else:
-                print("Player does not have any cards")
+    def play_game(self) -> None:
+        total_turn_count = 0
+        while total_turn_count <= 52:
+            for player in self.players:
+                while player.cards:
+                    player.turn_count += 1
+                    card_played = player.play()
+                    print(card_played)
+                else:
+                    print("Player does not have any cards")
+                total_turn_count += player.turn_count
