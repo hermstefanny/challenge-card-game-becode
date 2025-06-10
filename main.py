@@ -3,12 +3,11 @@ from utils.game import Player
 
 if __name__ == "__main__":
 
-    player_1 = Player("Thomas", [], 0, 0, [])
-    player_2 = Player("Rose", [], 0, 0, [])
-    player_3 = Player("Joseph", [], 0, 0, [])
-    # player_4 = Player("Diane", [], 0, 0, [])
+    players_names = ["Thomas", "Rose", "Joseph", "Gerardo"]
+    active_players = []
 
-    active_players = [player_1, player_2, player_3]
+    for player_name in players_names:
+        active_players.append(Player(player_name, [], 0, 0, []))
 
     board = Board(active_players, 0, [], [])
     board.start_game()
