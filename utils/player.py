@@ -52,12 +52,12 @@ class Deck:
 
     def __str__(self) -> str:
         """This function will display each card with its corresponding value, symbol and color"""
-        """Retruns an string with the numbers of cards in the deck"""
+        """Returns a string with the numbers of cards in the deck"""
 
         for card in self.deck_cards:
             print(f"This unique card is {card}")
 
-        return f"The number of cards is {len(self.deck_cards)}"
+        return f"Number of cards in this desk: {len(self.deck_cards)}"
 
     def fill_deck(self) -> None:
         """Function to create all 52 cards, assigning an icon, a color and a value"""
@@ -96,9 +96,7 @@ class Deck:
         print(n_cards)
 
         for i, player in enumerate(players):
-            cards_for_player = self.deck_cards[i : i + n_cards]
+            cards_for_player = self.deck_cards[0:n_cards]
             player.cards.extend(cards_for_player)
-
-
-# player_1 = Player(["list of cards"], 0, 0, ["history of cards"])
-# player_2 = Player(["list of cards"], 0, 0, ["history of cards"])
+            for card in cards_for_player:
+                self.deck_cards.remove(card)

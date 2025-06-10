@@ -39,6 +39,9 @@ class Board:
             player.display_players_cards()
             print("-----Cards distributed----")
 
+        print("The cards remaining on deck are:")
+        print(deck)
+
     def play_game(self) -> None:
 
         player_finished = [False for player in self.players]
