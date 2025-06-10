@@ -11,7 +11,7 @@ class Symbol:
         # one of ["♥", "♦", "♣", "♠"]
 
     def __str__(self) -> str:
-        """String that defines the class symbol"""
+        """String that defines the class Symbol"""
         return f"The symbol object has {self.color} {self.icon}"
 
 
@@ -24,5 +24,5 @@ class Card(Symbol):
         self.value = value
 
     def __str__(self) -> str:
-        """String that defines the class card"""
+        """String that defines the class Card"""
         return f" {self.value}({self.icon}) {self.color}"
